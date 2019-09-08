@@ -15,7 +15,8 @@ module.exports = {
         async function fetchPostsFromEachSubreddit(subreddits) {
             return Promise.all(
                 subreddits.map(
-                    subreddit => redditClient.fetchNewPosts(subreddit, {limit: 100})));
+                    subreddit => redditClient.fetchNewPosts(subreddit, {limit: 100})))            
+            .then(combinePostsFromAllListings);
         }
 
         function combinePostsFromAllListings(listings) {
@@ -41,7 +42,6 @@ module.exports = {
 
         return Promise.resolve(subreddits)
             .then(fetchPostsFromEachSubreddit)
-            .then(combinePostsFromAllListings)
             .then(filterPostsWithKeywordsInTitle)
             .then(savePosts)
     }
