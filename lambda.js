@@ -1,5 +1,5 @@
-const betteridge = require('./src/betteridge');
+const bot = require('./bot);
 
 exports.handler = async (event, context) => {
-    return context.succeed(await betteridge.invoke());
+    return context.succeed(await bot.invoke());
 };
