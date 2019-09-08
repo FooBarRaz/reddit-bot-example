@@ -4,8 +4,8 @@ const {
 } = require('./reddit');
 
 
-const subreddits = process.env.subreddits.split(',');
-const keywords = process.env.keywords.split(',');
+const subreddits = process.env.subreddits.split(',').map(s => s.trim());
+const keywords = process.env.keywords.split(',').map(s => s.trim());
 
 
 module.exports = {
