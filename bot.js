@@ -34,7 +34,7 @@ module.exports = {
             return posts.filter(postHasKeywordInTitle);
         }
 
-        function savePosts(posts) {
+        async function savePosts(posts) {
             return Promise.all(
                 posts.map(post => redditClient.savePost(post))
             ).then(() => posts.map(getPostTitle))
